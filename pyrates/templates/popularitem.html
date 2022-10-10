@@ -1,0 +1,144 @@
+{% extends 'my_profile.html' %}
+
+{%block body%}
+
+
+
+<div class="container-fluid bg-secondary">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="static/images/bg_2.png" alt="hugenerd" width="60" height="60" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">Admin </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="{{url_for("menu")}}">Place New Order</a></li>
+                        <li><a class="dropdown-item" href="#">Update Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                    </ul>
+                </div>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                  <li class="nav-item">
+                      <a href="{{url_for("allordersview")}}" class="nav-link align-middle px-0">
+                          <i class="fa fa-home text-light" style="font-size:30px;"></i> <span class="ms-1 d-none d-sm-inline text-light">Home</span>
+                      </a>
+                  </li>
+                 
+                  <li>
+                      <a href="{{url_for("getuserdata")}}" class="nav-link px-0 align-middle">
+                          <i class="fa fa-calendar text-light" style="font-size:30px;color:primary"></i><span class="ms-1 d-none d-sm-inline text-light">My Orders</span></a>
+                  </li>
+          
+                  <li>
+                      <a href="{{url_for("totalsales")}}" class="nav-link px-0 align-middle">
+                          <i class="fa fa-address-book text-light" style="font-size:30px;color:primary"></i> <span class="ms-1 d-none d-sm-inline text-light">Sales Data </span> </a>
+                  </li>
+                  <li>
+                    <a href="{{url_for('enquiryformview')}}"  class="nav-link px-0 align-middle">
+                        <i class="fa fa-address-book text-light" style="font-size:30px;"></i> <span class="ms-1 d-none d-sm-inline text-light">Customer Enquiry</span> </a>
+                </li>
+           
+              <li>
+                <a href="{{url_for('surveyformview')}}" class="nav-link px-0 align-middle">
+                    <i class="fa fa-address-book text-light" style="font-size:30px;"></i> <span class="ms-1 d-none d-sm-inline text-light"> Customer Survey Form</span> </a>
+            </li>
+              </ul>
+                <hr>
+            </div>
+           
+        </div>
+
+     
+
+       <div >
+        <div >
+          <h1 class='fw-bold text-wrap text-primary bg-light  border shadow p-1 mb-1 rounded' align=center >Sales data Insights</h5>
+        </div>
+ 
+       
+                        <h2 class="header text-light text-center">
+                           
+            {%for doctor in message %}
+            <tr class='bg-info'> 
+           
+              <td >{{doctor.count}}</td>
+              <td >{{doctor.item}}</td>
+              
+         
+              
+           
+               
+            </tr>
+
+            {% endfor %}
+
+                        </h2>
+          
+                  
+         
+                
+<br>
+
+     
+                  
+       
+               
+          
+       
+
+        
+        
+
+    </div>
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
+integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" 
+crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
+integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" 
+crossorigin="anonymous"></script>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous">
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous">
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"> </script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">  </script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"> </script>    
+
+
+
+<script> 
+    $( document ).ready(function() {     
+    $("#from-datepicker").datepicker({          
+    format: 'yyyy-mm-dd' //can also use format: 'dd-mm-yyyy'     
+    });      
+    });  
+    </script> 
+{%endblock%}

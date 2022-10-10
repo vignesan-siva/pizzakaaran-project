@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/addtocart.css">
+    <title>Addtocart</title>
+    
+</head>
+<body>
+    <form method="POST" action="{{url_for('addtocart')}}">
+    <div class="center">      
+        <div class="buttons d-flex flex-row">
+            <div class="cart">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <input type="text" name=items placeholder="items">
+            <input type="text" name=amount placeholder="amount">
+            <input type="submit" value="Add To Cart" /><br /><br />
+            <!-- <button class="btn btn-success cart-button px-5">
+                <span class="dot">1</span>Add to cart </button>  -->
+        </div> 
+    </div>
+</form>
+</body>
+</html>
+    

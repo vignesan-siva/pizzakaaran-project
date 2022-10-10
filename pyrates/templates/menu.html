@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pizza Kaaran</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+
+	<link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="static/css/aos.css">
+
+    <link rel="stylesheet" href="static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="static/ss/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="static/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="static/css/flaticon.css">
+    <link rel="stylesheet" href="static/css/icomoon.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" 
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script>
+		var here=sessionStorage.getItem("token");
+		console.log("=======================>"+here);
+	</script>
+  </head>
+  <body style='color:white'onload=display_ct();>
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{{url_for("home")}}"><span class="flaticon-pizza-1 mr-1"></span>Pizza<br><small>Kaaran</small></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+				<li class="nav-item"><span id='ct' class='btn btn-danger mt-3 display-'></span></li>
+				<li class="nav-item"><a href="{{url_for("home")}}" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="{{url_for("menu")}}" class="nav-link">Pizza</a></li>
+				<li class="nav-item"><a href="{{url_for("drinks")}}" class="nav-link">Drinks</a></li>
+				<li class="nav-item"><a href="{{url_for("burger")}}" class="nav-link">Burger</a></li>
+				<li class="nav-item"><a href="{{url_for("pasta")}}" class="nav-link">Pasta</a></li>
+				<li class="nav-item"><a href="{{url_for("services")}}" class="nav-link">Services</a></li>
+				<li class="nav-item"><a href="{{url_for("about")}}" class="nav-link">About</a></li>
+
+
+				
+	        </ul>
+
+				<br></br>
+
+				<div class="dropdown " style='padding:10px'>
+					<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class='fas fa-user-alt' style='font-size:20px;color:white'></i>
+						<span class="d-sm-inline "></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+						<li><a class="dropdown-item" href="{{url_for("profile")}}">My Profile</a></li>
+						
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="{{url_for("logout")}}">Log out</a></li>
+					</ul>
+				</div>
+	        </ul>
+
+			
+
+
+	      </div>
+		  </div>
+	  </nav>
+    <!-- END nav -->
+
+	{%with messages = get_flashed_messages()%}
+
+    {%if messages%}
+
+    {% for message in messages %}
+
+    <div class="alert alert-success alert-dismissable" role="alert">
+
+     <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+
+         <span aria-hidden="true">&times;</span>
+
+     </button>
+        {{message}}
+
+
+    </div>
+
+
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    
+
+	
+		<section >
+			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+				  <div class="carousel-item active" data-bs-interval="10000">
+					<img src="static\images\menubanner1.jpg" class="d-block w-100" alt="offer" height=350px>
+				  </div>
+				  <div class="carousel-item" data-bs-interval="2000">
+					<img src="static\images\menubanner2.jpg" class="d-block w-100" alt="offer"height=350px>
+				  </div>
+				  <div class="carousel-item">
+					<img src="static\images\menubanner3.jpg" class="d-block w-100" alt="offer"height=350px>
+				  </div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				  <span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				  <span class="visually-hidden">Next</span>
+				</button>
+			  </div>
+
+			  <div class="container">
+				<div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
+			  <div class="col-md-7 heading-section text-center ftco-animate">
+				<h2 class="mb-4">Our Menu Pricing</h2>
+				<p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+				<p class="mt-5">Pizza always confuses me. It comes in a square box, yet when you open it; it's round. And when you start eating it, it's a triangle! Life and people are like pizza; look different, appear different and of course behave absolutely different.</p>
+			  </div>
+			</div>
+
+    
+				
+			
+		<div class="container">
+			<div class="row">
+				{%for pizzaitem in pizzaitems%}
+				<div class="col-sm-3">
+					<div class="card-deck">
+						<div class="card  shadow-lg mb-5 rounded " style=background:#679B9B;>
+							<img class="card-img-top p-1 shadow mb-1 bg-body rounded" src="{{pizzaitem.product_pic}}" alt="Card image cap" height=150px>
+							<div class="card-block">
+								<h4 class="card-title m-1">{{pizzaitem.product_name}}</h4>
+								<p class="card-text">
+									NOW we the guys of "Pizza Kaaran" are keeping that word with Remote Area Pizza Delivery At an Affordable Price !!
+								</p>
+								
+							
+								<h4 class="card-title m-1">₹ {{pizzaitem.product_price}}</h4>
+								<div class="mx-auto mb-2 ms-4">
+									<a  class="btn btn-primary" href="{{url_for('pizzaitem',id=pizzaitem.id)}}">Order</a>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				{%endfor%}
+				</div>
+			</div>
+		</div>
+    </section>
+
+    <section class="ftco-menu">
+    	<div class="container-fluid">
+    		<div class="row d-md-flex">
+	    		<div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url(static/images/about.jpg);">
+	    		</div>
+	    		<div class="col-lg-8 ftco-animate p-md-5">
+		    		<div class="row">
+		          <div class="col-md-12 nav-link-wrap mb-5">
+		            <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		              <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Pizza</a>
+
+		              <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
+
+		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Burgers</a>
+
+		              <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Pasta</a>
+		            </div>
+		          </div>
+		          <div class="col-md-12 d-flex align-items-center">
+		            
+		            <div class="tab-content ftco-animate" id="v-pills-tabContent">
+
+		              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+		              	<div class="row">
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pizza7.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Panner Pizza</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>₹ 249</span></p>
+		              				
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pizza5.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Babycorn Pizza</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>₹ 249</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pizza11.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Momo-n-Corn Pizza</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>₹ 299</span></p>
+		              				
+		              				</div>
+		              			</div>
+		              		</div>
+		              	</div>
+		              </div>
+
+		              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+		                <div class="row">
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pepsi.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Pepsi</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>₹ 39</span></p>
+		              				
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/coca-cola.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Coke Cola</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>₹ 39</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/redbull.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Redbull</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>₹ 119</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              	</div>
+		              </div>
+
+		              <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+		                <div class="row">
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/burger-1.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Itallian Pizza</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>RS.190</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/burger-2.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Itallian Pizza</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>RS.190</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/burger-3.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Itallian Pizza</a></h3>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>RS.190</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              	</div>
+		              </div>
+
+		              <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+		                <div class="row">
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pasta-1.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Itallian Pizza</a></h3>
+		              					<p> Don't do Drugs... Pizza is better..</p>
+		              					<p class="price"><span>RS.190</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pasta-2.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Itallian Pizza</a></h3>
+		              					<p> Don't do Drugs... Pizza is better..</p>
+		              					<p class="price"><span>RS.190</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(static/images/pasta-3.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Itallian Pizza</a></h3>
+		              					<p> Don't do Drugs... Pizza is better..</p>
+		              					<p class="price"><span>RS.190</span></p>
+		              					
+		              				</div>
+		              			</div>
+		              		</div>
+		              	</div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+    	</div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <p> Vendhu thanindhadhu kaadu.. Pizza Kaaran ku Vanakatha podu.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(static/images/image_1.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Combo Of the Tikki Twist Burger + Lite Whopper JR burger = NAATU Koothu for your tongue.</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(static/images/image_2.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#"> Don't do Drugs... Pizza is better..</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-md-5">
+             <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Services</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Cooked</a></li>
+                <li><a href="#" class="py-2 d-block">Deliver</a></li>
+                <li><a href="#" class="py-2 d-block">Quality Foods</a></li>
+                <li><a href="#" class="py-2 d-block">Mixed</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@pizzakaaran.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+			<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website made with Hexacorpians<i class="icon-heart" aria-hidden="true"></i> by <a href="https://pizzakaran.com" target="_blank">PY-Rates</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/jquery.easing.1.3.js"></script>
+  <script src="static/js/jquery.waypoints.min.js"></script>
+  <script src="static/js/jquery.stellar.min.js"></script>
+  <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/jquery.magnific-popup.min.js"></script>
+  <script src="static/js/aos.js"></script>
+  <script src="static/js/jquery.animateNumber.min.js"></script>
+  <script src="static/js/bootstrap-datepicker.js"></script>
+  <script src="static/js/jquery.timepicker.min.js"></script>
+  <script src="static/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="static/js/google-map.js"></script>
+  <script src="static/js/main.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+  <script>function display_ct6() {
+	var x = new Date()
+	var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
+	hours = x.getHours( ) % 12;
+	hours = hours ? hours : 12;
+	var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+	x1 = x1 + " - " +  hours + ":" +  x.getMinutes() + ":" +  x.getSeconds() + ":" + ampm;
+	document.getElementById('ct').innerHTML = x1;
+	display_c6();
+	 }
+	 function display_c6(){
+	var refresh=10; // Refresh rate in milli seconds
+	mytime=setTimeout('display_ct6()',refresh)
+	}
+	display_c6()
+	</script>
+
+  </body>
+</html>

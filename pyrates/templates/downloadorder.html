@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+	"width=device-width,initial-scale=1.0">
+
+	<!-- CSS only -->
+	<link href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+		integrity=
+"sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+		crossorigin="anonymous" rel="stylesheet">
+
+	<!-- Html2Pdf -->
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"
+		integrity=
+"sha512vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A=="
+		crossorigin="anonymous">
+	</script>
+
+	<style>
+		.heading{
+		text-align: center;
+		color: #CBA360;
+		}
+	</style>
+</head>
+
+<body>
+	
+
+	<!-- Form encrypted as text -->
+	<form id ="form-print" enctype="text/plain"
+		class="form-control">
+        <h2 class="heading" >
+            =============PIZZA KAARAN==========
+            </h2>
+
+		<label for="name">
+		<strong>productName: </strong>
+		</label>
+		<input class="form-control" type="text"
+		id="name" name="Name"value="{{data.product_name}}">
+		<br>
+
+		<label >
+		<strong>username: </strong>
+		</label>
+		<input class="form-control" type="text"
+		  value="{{data.username}}">
+		<br>
+
+        <label >
+            <strong>email: </strong>
+            </label>
+            <input class="form-control" type="text"
+             value="{{data.email}}">
+            <br>
+
+        <label>
+            <strong>quantity: </strong>
+            </label>
+            <input class="form-control" type="text"
+              value="{{data.quantity}}">
+            <br>
+
+            <label >
+                <strong>mobile number: </strong>
+                </label>
+                <input class="form-control" type="text"
+               value="{{data.mobilenumber}}">
+                <br>
+    
+            <label>
+                <strong>orderdate: </strong>
+                </label>
+                <input class="form-control" type="text"
+                  value="{{data.orderdate}}">
+                <br>
+            
+            <label >
+                    <strong>Address: </strong>
+                    </label>
+                    <input class="form-control" type="text"
+                     value="{{data.address}}">
+                    <br>  
+                    
+            <label >
+                <strong>TotalCost: </strong>
+                </label>
+                <input class="form-control" type="text"
+                value="{{data.totalcost}}">
+                <br> 
+
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website made with Hexacorpians<i class="icon-heart" aria-hidden="true"></i> by <a href="https://pizzakaran.com" target="_blank">PY-Rates</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+                </div>    
+	</form>
+    <hr>
+    <input type="button" class="btn btn-primary"
+    onclick="GeneratePdf();" value="Download">
+				
+	<script>		
+		// Function to GeneratePdf
+		function GeneratePdf() {
+			var element = document.getElementById('form-print');
+			html2pdf(element);
+		}
+	</script>
+
+	<script src=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity=
+"sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+		crossorigin="anonymous">
+	</script>
+</body>
+
+</html>
