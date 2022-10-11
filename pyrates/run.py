@@ -1,6 +1,7 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
 
+from email import message
 from flask import Flask,render_template
 from flask_mysqldb import MySQL 
 from localStoragePy import localStoragePy
@@ -605,10 +606,12 @@ def datewisesales():
     try:
         cursor = mysql.connection.cursor()
         if request.method=='POST':
-            hello=request.form['date']
+            hello=request.form['dateone']
+            print(hello)
             cursor=mysql.connection.cursor()
-            cursor.execute("SELECT sum(totalcost)as hello FROM orders WHERE orderdate LIKE %s ", [hello])
+            cursor.execute("select sum(totalcost) as totalresult FROM orders WHERE orderdate LIKE %s ", [hello])
             displaylist = cursor.fetchone()
+            print(displaylist)
             return render_template('salesdata.html',message=displaylist)    
         return render_template('salesdata.html')
     except Exception as e:

@@ -97,7 +97,7 @@
                        
                         <div class="mb-3">
                            
-                            <input type="text" id="from-datepicker" placeholder='Choose Date' name='date'/> 
+                            <input type="text" id="from-datepicker" placeholder='Choose Date' name='dateone'/> 
                             <button type="submit" class="btn-sm btn-primary mt-0">Find</button>
                           </div>    
                       </form>
@@ -105,7 +105,7 @@
                     <div class="card-block">
                         <h4 class="card-title text-dark text-center">Date wise Sales</h4>
                         <h2 class="header text-light text-center">
-                            {{message.hello}}
+                            {{message.totalresult}}
                            
                         </h2>
           
@@ -177,7 +177,7 @@ crossorigin="anonymous">
 <script> 
     $( document ).ready(function() {     
     $("#from-datepicker").datepicker({          
-    format: 'yyyy-mm-dd' //can also use format: 'dd-mm-yyyy'     
+    format: 'yyyy/mm/dd' //can also use format: 'dd-mm-yyyy'     
     });      
     });  
     </script> 
