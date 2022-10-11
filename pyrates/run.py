@@ -374,7 +374,6 @@ def editorder(id):
 #update order
 @app.route('/orderstatus/<int:id>',methods=['POST','GET'])
 def orderstatus(id):
-    try:
         cursor = mysql.connection.cursor()
         if request.method=='POST':
             productname=request.form['productname']
@@ -385,10 +384,10 @@ def orderstatus(id):
             orderdate=request.form['orderdate']
             address=request.form['address']
             price=request.form['price']  
-            totalcost=request.form['totalprice'] 
-            orderstatus=request.form['orderstatus'] 
+            totalcost=(int(quantity)*int(price))
+           
             cursor=mysql.connection.cursor()
-            cursor.execute("update orders set productname=%s,username=%s,email=%s,quantity=%s,mobilenumber=%s,orderdate=%s,address=%s,price=%s,totalcost=%s,orderstatus=%s where id=%s",(productname,username,email,quantity,mobilenumber,orderdate,address,price,totalcost,orderstatus,id))
+            cursor.execute("update orders set product_name=%s,username=%s,email=%s,quantity=%s,mobilenumber=%s,orderdate=%s,address=%s,price=%s,totalcost=%s where id=%s",(productname,username,email,quantity,mobilenumber,orderdate,address,price,totalcost,id))
             mysql.connection.commit()
             cursor.close()
             flash("Record Has Been Updated Successfully")
@@ -397,10 +396,7 @@ def orderstatus(id):
         cursor.execute(sql,[id])
         result=cursor.fetchone()
         return render_template('adminupdateorders.html',data=result)
-    except Exception as e:
-            flash("sorry some problem on server try again later")
-            return render_template('admindashboard.html')
-        
+ 
 
 
 #update profile
