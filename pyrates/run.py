@@ -40,7 +40,7 @@ def customers():
                 session['loggedin'] = True
                 session['email'] = email
                 session['password'] = password
-                return render_template('index.html',token=result)
+                return render_template('index1.html',token=result)
             else:
                 flash('Enter Correct Username or Password!')
                 return render_template('userlogin.html')
@@ -352,11 +352,12 @@ def editorder(id):
             email=request.form['email']
             quantity=request.form['quantity'] 
             mobilenumber=request.form['mobilenumber']
+            price=request.form['price']
             orderdate=request.form['orderdate']
             address=request.form['address'] 
-            totalcost=request.form['totalprice'] 
+            totalcost=(int(quantity)*int(price))
             cursor=mysql.connection.cursor()
-            cursor.execute("update orders set productname=%s,username=%s,email=%s,quantity=%s,mobilenumber=%s,orderdate=%s,address=%s,totalcost=%s where id=%s",(productname,username,email,quantity,mobilenumber,orderdate,address,totalcost,id))
+            cursor.execute("update orders set product_name=%s,username=%s,email=%s,quantity=%s,mobilenumber=%s,orderdate=%s,address=%s,totalcost=%s where id=%s",(productname,username,email,quantity,mobilenumber,orderdate,address,totalcost,id))
             mysql.connection.commit()
             cursor.close()
             flash("Record Has Been Updated Successfully")
